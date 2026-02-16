@@ -24,7 +24,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'aiprovider_yandexai';
-$plugin->version = 2025082800;
-$plugin->requires = 2024100100;
 $plugin->release = '1.0';
+$plugin->version = 2026021600;
+$plugin->requires = 2025041400.00;
 $plugin->maturity = MATURITY_STABLE;
+$plugin->supported    = [500, 501];
