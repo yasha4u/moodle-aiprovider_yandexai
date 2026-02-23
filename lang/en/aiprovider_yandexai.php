@@ -23,7 +23,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Общие строки плагина.
+// General plugin strings.
 $string['pluginname'] = 'Yandex AI API Provider';
 $string['privacy:metadata:aiprovider_yandexai:prompttext'] = 'The user entered text prompt used to generate the response.';
 $string['privacy:metadata:aiprovider_yandexai:model'] = 'The model used to generate the response.';
@@ -43,22 +43,22 @@ $string['endpoint'] = 'API endpoint URL';
 $string['temperature'] = 'Generation temperature';
 $string['temperature_help'] = 'Enter a value from 0 to 1 with an accuracy of 2 characters';
 
-// Строки для действия генерации текста.
+// Strings for the text generation action.
 $string['action:generate_text:model'] = 'AI model address';
 $string['action:generate_text:model_help'] = 'The model used to create a text response. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
 $string['action:generate_text:allowhtml'] = 'Use html responses';
 
-// Строки для действия генерации изображения.
+// Strings for the image generation action.
 $string['action:generate_image:model'] = 'AI model address';
 $string['action:generate_image:model_help'] = 'The model used to generate the image. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
 $string['action:generate_image:getimageurl'] = 'Link to get the result of the generation';
 $string['action:generate_image:width'] = 'Aspect ratio of the generated image: width';
 $string['action:generate_image:height'] = 'Aspect ratio of the generated image: height';
 
-// Строки для действия "Краткое изложение текста".
+// Strings for the "Summarize text" action.
 $string['action:summarise_text:model'] = 'AI model';
 $string['action:summarise_text:model_help'] = 'The model used to summarize the text. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
 
-// Строки для действия "Пояснительный текст".
+// Strings for the "Explain text" action.
 $string['action:explain_text:model'] = 'AI model';
 $string['action:explain_text:model_help'] = 'The model used to explain the text. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';

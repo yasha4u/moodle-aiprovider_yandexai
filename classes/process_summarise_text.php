@@ -25,7 +25,7 @@ namespace aiprovider_yandexai;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Класс генерации краткого изложения текста
+ * Text summarization generation class
  *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}

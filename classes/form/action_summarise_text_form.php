@@ -26,8 +26,7 @@ namespace aiprovider_yandexai\form;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Класс формы настройки для генерации текста для действий
- * "Краткое изложение текста" и "Пояснительный текст"
+ * Text generation configuration form class for the "Summarize text" action.
  */
 class action_summarise_text_form extends base_form {
     /**

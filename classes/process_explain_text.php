@@ -25,7 +25,7 @@ namespace aiprovider_yandexai;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Класс генерации пояснения для переданного текста
+ * Class for generating an explanation for the provided text.
  */
 class process_explain_text extends process_generate_text {
 

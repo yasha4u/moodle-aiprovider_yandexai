@@ -26,7 +26,7 @@ namespace aiprovider_yandexai\form;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Класс формы настройки для генерации текста.
+ * Text generation configuration form class.
  */
 class action_generate_text_form extends base_form {
     /**
@@ -38,7 +38,7 @@ class action_generate_text_form extends base_form {
         parent::definition();
         $mform = $this->_form;
 
-        // Использовать html ответы
+        // Use HTML responses
         $mform->addElement(
             'checkbox',
             'allowhtml',

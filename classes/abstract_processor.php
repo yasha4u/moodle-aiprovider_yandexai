@@ -46,7 +46,7 @@ use Psr\Http\Message\UriInterface;
  */
 abstract class abstract_processor extends process_base {
     /**
-     * Получаем конечную точку API.
+     * Getting the API endpoint.
      *
      * @return UriInterface
      * @throws Exception
@@ -56,7 +56,7 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Получаем модель.
+     * Getting the model.
      *
      * @return string
      * @throws Exception
@@ -66,7 +66,7 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Получаем температуру генерации.
+     * Getting the generation temperature.
      *
      * @return string
      * @throws Exception
@@ -76,7 +76,7 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Получаем системную инструкцию.
+     * Getting the system instruction..
      *
      * @return string
      * @throws Exception
@@ -166,7 +166,7 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Метод для получения значения настройки действия
+     * Method for retrieving the action setting value.
      *
      * @param $settingname
      * @return mixed

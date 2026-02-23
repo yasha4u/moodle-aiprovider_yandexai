@@ -28,12 +28,12 @@ defined('MOODLE_INTERNAL') || die();
 use core_ai\form\action_settings_form;
 
 /**
- * Базовый класс формы настройки для генерации текста.
- * Здесь располагаются общие элементы формы
+ * Base text generation configuration form class.
+ * Common form elements are located here.
  */
 class base_form extends action_settings_form {
     /**
-     * @var string Название плагина.
+     * @var string Plugin name.
      */
     protected const PLUGINNAME = 'aiprovider_yandexai';
 
@@ -87,30 +87,30 @@ class base_form extends action_settings_form {
         $this->providername = $this->_customdata['providername'] ?? self::PLUGINNAME;
         $this->allowhtml = $this->_customdata['allowhtml'] ?? false;
 
-        // Тип действия
+        // Action type
         $mform->addElement('hidden', 'action', $this->action);
         $mform->setType('action', PARAM_TEXT);
 
-        // Название провайдера
+        // Provider name
         $mform->addElement('hidden', 'provider', self::PLUGINNAME);
         $mform->setType('provider', PARAM_TEXT);
 
-        // ID провайдера
+        // Provider ID
         $mform->addElement('hidden', 'providerid', $this->providerid);
         $mform->setType('providerid', PARAM_INT);
 
         $fields = [
-            // Адрес модели ИИ
+            // AI model endpoint
             [
                 'element' => 'text', 'name' => 'model', 'type' => PARAM_TEXT,
                 'help' => true, 'default' => 'gpt://catalogue_id/yandexgpt',
             ],
-            // Ссылка на API
+            // API URL
             [
                 'element' => 'text', 'name' => 'endpoint', 'type' => PARAM_URL, 'help' => false,
                 'default' => 'https://llm.api.cloud.yandex.net/foundationModels/v1/completion'
             ],
-            // Температура генерации
+            // Generation temperature
             [
                 'element' => 'text', 'name' => 'temperature', 'type' => PARAM_FLOAT,
                 'help' => true, 'default' => '0.25'
@@ -118,11 +118,11 @@ class base_form extends action_settings_form {
         ];
 
         foreach ($fields as $field) {
-            // Добавляем поле в форму
+            // Adding a field to the form
             self::add_form_field($field);
         }
 
-        // Системная инструкция
+        // System instruction
         $mform->addElement(
             'textarea',
             'systeminstruction',
@@ -142,7 +142,7 @@ class base_form extends action_settings_form {
     }
 
     /**
-     * Метод, добавляющий поля типа 'passwordunmask' и 'text'
+     * Method adding fields of type 'passwordunmask' and 'text'.
      *
      * @param $field
      * @return void
@@ -151,28 +151,28 @@ class base_form extends action_settings_form {
     protected function add_form_field($field): void {
         $mform = $this->_form;
 
-        // Проверяем наличие строки в языковом файле
+        // Checking for the presence of a string in the language file.
         $strexists = get_string_manager()->string_exists("action:{$this->actionname}:{$field['name']}", self::PLUGINNAME);
         $langstr = $strexists
             ? get_string("action:{$this->actionname}:{$field['name']}", self::PLUGINNAME)
             : get_string($field['name'], self::PLUGINNAME);
 
-        // Добавляем поле в форму
+        // Adding a field to the form
         $mform->addElement(
             $field['element'],
             $field['name'],
             $langstr,
             'maxlength="255" size="30"',
         );
-        // Сетим тип поля
+        // Field type
         $mform->setType($field['name'], $field['type']);
-        // Устанавливаем значение по умолчанию
+        // Setting the default value
         $mform->setDefault($field['name'], $this->actionconfig[$field['name']] ?? $field['default']);
-        // Обязательно к заполнению
+        // Required field
         $mform->addRule($field['name'], null, 'required', null, 'client');
 
         if ($field['help']) {
-            // Если надо - выводим подсказку
+            // If needed, display a help
             if ($strexists) {
                 $mform->addHelpButton($field['name'], "action:{$this->actionname}:{$field['name']}", self::PLUGINNAME);
             } else {

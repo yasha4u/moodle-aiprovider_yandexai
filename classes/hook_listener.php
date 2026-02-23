@@ -43,7 +43,7 @@ class hook_listener {
 
         $mform = $hook->mform;
 
-        // Ключ доступа к YandexAI.
+        // YandexAI API key.
         $mform->addElement(
             'passwordunmask',
             'apikey',

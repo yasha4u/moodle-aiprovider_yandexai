@@ -61,7 +61,7 @@ class process_generate_image extends abstract_processor {
         $response = parent::query_ai_api();
 
         if ($response['success']) {
-            // Получаем изображение и сохраняем его в файл.
+            // Getting the image and saving it to a file.
             $fileobj = $this->save_to_file(
                 $this->action->get_configuration('userid'),
                 $response['id']
@@ -74,7 +74,7 @@ class process_generate_image extends abstract_processor {
     }
 
     /**
-     * Получение соотношения сторон изображения
+     * Getting the image aspect ratio
      *
      * @param string $ratio
      * @return string[]
@@ -157,7 +157,7 @@ class process_generate_image extends abstract_processor {
     }
 
     /**
-     * Получение и сохранение изображения в файл
+     * Retrieving and saving the image to a file.
      *
      * @param int $userid
      * @param string $imageid
@@ -184,10 +184,10 @@ class process_generate_image extends abstract_processor {
         );
 
         do {
-            // Пауза перед получением изображения. По доке - 10 сек
+            // Pause before retrieving the image
             // https://yandex.cloud/ru/docs/foundation-models/quickstart/yandexart#api_1
             sleep(5);
-            // Получаем изображение
+            // Getting the image
             $getdata = $curl->get($this->get_imageurl() . $imageid);
             $decoded_data = json_decode($getdata);
         } while ($decoded_data->done == false);
