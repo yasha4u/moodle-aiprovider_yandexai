@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Privacy Subsystem for Yandex AI provider implementing null_provider.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov

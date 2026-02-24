@@ -146,7 +146,7 @@ class base_form extends action_settings_form {
     /**
      * Method adding fields of type 'passwordunmask' and 'text'.
      *
-     * @param $field
+     * @param array $field
      * @return void
      * @throws \coding_exception
      */
@@ -168,7 +168,7 @@ class base_form extends action_settings_form {
         );
         // Field type.
         $mform->setType($field['name'], $field['type']);
-        // Setting the default value
+        // Setting the default value.
         $mform->setDefault($field['name'], $this->actionconfig[$field['name']] ?? $field['default']);
         // Required field.
         $mform->addRule($field['name'], null, 'required', null, 'client');

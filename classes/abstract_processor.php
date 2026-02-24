@@ -170,7 +170,7 @@ abstract class abstract_processor extends process_base {
     /**
      * Method for retrieving the action setting value.
      *
-     * @param $settingname
+     * @param string $settingname
      * @return mixed
      * @throws Exception
      */

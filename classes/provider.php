@@ -133,7 +133,7 @@ class provider extends \core_ai\provider {
     /**
      * Checking if the action is enabled.
      *
-     * @param $action
+     * @param string $componentname
      * @return bool
      * @throws \coding_exception
      */
