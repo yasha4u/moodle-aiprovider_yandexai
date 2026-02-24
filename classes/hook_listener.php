@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Hook listener for Yandex AI provider.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2025 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -23,15 +25,15 @@
 
 namespace aiprovider_yandexai;
 
-defined('MOODLE_INTERNAL') || die();
-
 use core_ai\hook\after_ai_provider_form_hook;
 
 /**
- * Hook listener for YandexAI AI provider.
+ * Hook listener for Yandex AI provider.
  */
 class hook_listener {
     /**
+     * Hook listener for the Yandex AI instance setup form.
+     *
      * @param after_ai_provider_form_hook $hook
      * @return void
      * @throws \coding_exception

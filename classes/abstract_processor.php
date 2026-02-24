@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Abstract class for processing text generation.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -22,8 +24,6 @@
  */
 
 namespace aiprovider_yandexai;
-
-defined('MOODLE_INTERNAL') || die();
 
 use core\http_client;
 use core_ai\process_base;
@@ -105,6 +105,8 @@ abstract class abstract_processor extends process_base {
     abstract protected function handle_api_success(ResponseInterface $response): array;
 
     /**
+     * Query the AI service.
+     *
      * @return array
      * @throws GuzzleException
      */
@@ -173,7 +175,8 @@ abstract class abstract_processor extends process_base {
      * @throws Exception
      */
     protected function get_setting($settingname) {
-        if (!empty($settingname)
+        if (
+            !empty($settingname)
             && array_key_exists($settingname, $this->provider->actionconfig[$this->action::class]['settings'])
         ) {
             return $this->provider->actionconfig[$this->action::class]['settings'][$settingname];

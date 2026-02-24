@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Class provider.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -22,8 +24,6 @@
  */
 
 namespace aiprovider_yandexai;
-
-defined('MOODLE_INTERNAL') || die();
 
 use core_ai\form\action_settings_form;
 use Psr\Http\Message\RequestInterface;
@@ -98,6 +98,8 @@ class provider extends \core_ai\provider {
     }
 
     /**
+     * Get the default settings for the action.
+     *
      * @param string $action
      * @return array
      */
@@ -136,7 +138,7 @@ class provider extends \core_ai\provider {
      * @throws \coding_exception
      */
     private static function plugin_enabled($componentname): bool {
-        // Editor AI plugins
+        // Editor AI plugins.
         $editorplugins = ['generate_image', 'generate_text'];
 
         if (in_array($componentname, $editorplugins)) {
@@ -144,7 +146,7 @@ class provider extends \core_ai\provider {
             $componentname = 'aiplacement_editor';
         }
 
-        // Course AI plugins
+        // Course AI plugins.
         $courseplugins = ['explain_text', 'summarise_text'];
 
         if (in_array($componentname, $courseplugins)) {

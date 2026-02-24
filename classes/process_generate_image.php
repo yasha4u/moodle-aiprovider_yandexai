@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Class process image generation.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -22,8 +24,6 @@
  */
 
 namespace aiprovider_yandexai;
-
-defined('MOODLE_INTERNAL') || die();
 
 use core_ai\ai_image;
 use GuzzleHttp\Psr7\Request;
@@ -40,6 +40,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class process_generate_image extends abstract_processor {
     /**
+     * Getting the image link
+     *
      * @return string
      * @throws \dml_exception
      */
@@ -48,6 +50,8 @@ class process_generate_image extends abstract_processor {
     }
 
     /**
+     * Query the AI service.
+     *
      * @return array
      * @throws \coding_exception
      * @throws \core\exception\moodle_exception
@@ -97,6 +101,8 @@ class process_generate_image extends abstract_processor {
     }
 
     /**
+     * Create the request object.
+     *
      * @param string $userid
      * @return RequestInterface
      * @throws \coding_exception
@@ -116,7 +122,7 @@ class process_generate_image extends abstract_processor {
 
         $generationoptions->aspectRatio = [
             'widthRatio' => $width,
-            'heightRatio' => $height
+            'heightRatio' => $height,
         ];
 
         // Create the request object.
@@ -136,6 +142,8 @@ class process_generate_image extends abstract_processor {
     }
 
     /**
+     * Handle a successful response from the external AI api.
+     *
      * @param ResponseInterface $response
      * @return array
      */
@@ -152,7 +160,7 @@ class process_generate_image extends abstract_processor {
             'createdBy' => $bodyobj->createdBy ?? '',
             'modifiedAt' => $bodyobj->modifiedAt ?? '',
             'done' => $bodyobj->done ?? '',
-            'metadata' => $bodyobj->metadata ?? ''
+            'metadata' => $bodyobj->metadata ?? '',
         ];
     }
 
@@ -179,23 +187,23 @@ class process_generate_image extends abstract_processor {
         $curl->setHeader(
             [
                 "Authorization: Api-Key " . $this->provider->config['apikey'],
-                "Content-Type: application/json"
+                "Content-Type: application/json",
             ]
         );
 
         do {
-            // Pause before retrieving the image
-            // https://yandex.cloud/ru/docs/foundation-models/quickstart/yandexart#api_1
+            // Pause before retrieving the image.
+            // https://yandex.cloud/ru/docs/foundation-models/quickstart/yandexart#api_1.
             sleep(5);
-            // Getting the image
+            // Getting the image.
             $getdata = $curl->get($this->get_imageurl() . $imageid);
-            $decoded_data = json_decode($getdata);
-        } while ($decoded_data->done == false);
+            $decodeddata = json_decode($getdata);
+        } while ($decodeddata->done == false);
 
         $filename = 'image_' . uniqid() . '.jpeg'; // Get the basename of the path.
         // Download the image and add the watermark.
         $tempdst = make_request_directory() . DIRECTORY_SEPARATOR . $filename;
-        file_put_contents($tempdst, base64_decode($decoded_data->response->image));
+        file_put_contents($tempdst, base64_decode($decodeddata->response->image));
 
         $image = new ai_image($tempdst);
         $image->add_watermark()->save();

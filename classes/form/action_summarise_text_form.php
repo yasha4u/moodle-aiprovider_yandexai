@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Summarize text action provider settings form.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2025 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -23,13 +25,13 @@
 
 namespace aiprovider_yandexai\form;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
- * Text generation configuration form class for the "Summarize text" action.
+ * Summarize text action provider settings form.
  */
 class action_summarise_text_form extends base_form {
     /**
+     * Form definition.
+     *
      * @return void
      * @throws \coding_exception
      */
