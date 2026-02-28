@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Privacy Subsystem for Yandex AI provider implementing null_provider.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -37,15 +39,13 @@ use core_privacy\local\request\userlist;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @codeCoverageIgnore
  */
-
-defined('MOODLE_INTERNAL') || die();
-
 class provider implements
     \core_privacy\local\metadata\provider,
     \core_privacy\local\request\core_userlist_provider,
     \core_privacy\local\request\plugin\provider {
-
     /**
+     * Returns information about the user data stored in this component.
+     *
      * @param collection $collection
      * @return collection
      */
@@ -61,6 +61,8 @@ class provider implements
     }
 
     /**
+     * Get the list of contexts that contain user information for the specified user.
+     *
      * @param int $userid
      * @return contextlist
      */
@@ -70,6 +72,8 @@ class provider implements
     }
 
     /**
+     * Get the list of users who have data within a context.
+     *
      * @param userlist $userlist
      * @return void
      */
@@ -78,6 +82,8 @@ class provider implements
     }
 
     /**
+     * Export all user data for the specified user, in the specified contexts.
+     *
      * @param approved_contextlist $contextlist
      * @return void
      */
@@ -86,6 +92,8 @@ class provider implements
     }
 
     /**
+     * Delete all data for all users in the specified context.
+     *
      * @param \context $context
      * @return void
      */
@@ -102,6 +110,8 @@ class provider implements
     }
 
     /**
+     * Delete all user data for the specified user, in the specified contexts.
+     *
      * @param approved_contextlist $contextlist
      * @return void
      */

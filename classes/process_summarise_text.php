@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Text summarization generation class
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -22,10 +24,8 @@
  */
 namespace aiprovider_yandexai;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
- * Класс генерации краткого изложения текста
+ * Text summarization generation class
  *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
@@ -33,5 +33,4 @@ defined('MOODLE_INTERNAL') || die();
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class process_summarise_text extends process_generate_text {
-
 }

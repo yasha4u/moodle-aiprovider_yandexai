@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Explain text action provider settings form.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2025 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -23,14 +25,13 @@
 
 namespace aiprovider_yandexai\form;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
- * Класс формы настройки для генерации текста для действий
- * "Краткое изложение текста" и "Пояснительный текст"
+ * Explain text action provider settings form.
  */
 class action_explain_text_form extends base_form {
     /**
+     * Form definition.
+     *
      * @return void
      * @throws \coding_exception
      */

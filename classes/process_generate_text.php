@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Class process text generation.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -23,14 +25,12 @@
 
 namespace aiprovider_yandexai;
 
-defined('MOODLE_INTERNAL') || die();
-
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Класс генерации текста
+ * Class process text generation.
  *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
@@ -39,6 +39,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class process_generate_text extends abstract_processor {
     /**
+     * Allow HTML
+     *
      * @return string
      * @throws \dml_exception
      */
@@ -47,6 +49,8 @@ class process_generate_text extends abstract_processor {
     }
 
     /**
+     * Create request object.
+     *
      * @param string $userid
      * @return RequestInterface
      * @throws \dml_exception
@@ -101,7 +105,7 @@ class process_generate_text extends abstract_processor {
         $bodyobj = json_decode($responsebody->getContents());
         $content = $bodyobj->result->alternatives[0]->message->text;
 
-        // Если установлена опция "Использовать html ответы", то конвертируем markdown в html.
+        // If the 'Use HTML responses' option is set, convert markdown to HTML.
         if ($this->allowhtml()) {
             $content = markdown_to_html($content);
         }

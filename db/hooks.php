@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Hooks callbacks for aiprovider_yandexai
+ *
  * @package   aiprovider_yandexai
  * @copyright 2025 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov

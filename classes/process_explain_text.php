@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Class for generating an explanation for the provided text.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2025 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -22,11 +24,8 @@
  */
 namespace aiprovider_yandexai;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
- * Класс генерации пояснения для переданного текста
+ * Class for generating an explanation for the provided text.
  */
 class process_explain_text extends process_generate_text {
-
 }

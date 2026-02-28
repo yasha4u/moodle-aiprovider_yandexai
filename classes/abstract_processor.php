@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Abstract class for processing text generation.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -22,8 +24,6 @@
  */
 
 namespace aiprovider_yandexai;
-
-defined('MOODLE_INTERNAL') || die();
 
 use core\http_client;
 use core_ai\process_base;
@@ -46,7 +46,7 @@ use Psr\Http\Message\UriInterface;
  */
 abstract class abstract_processor extends process_base {
     /**
-     * Получаем конечную точку API.
+     * Getting the API endpoint.
      *
      * @return UriInterface
      * @throws Exception
@@ -56,7 +56,7 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Получаем модель.
+     * Getting the model.
      *
      * @return string
      * @throws Exception
@@ -66,7 +66,7 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Получаем температуру генерации.
+     * Getting the generation temperature.
      *
      * @return string
      * @throws Exception
@@ -76,7 +76,7 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Получаем системную инструкцию.
+     * Getting the system instruction..
      *
      * @return string
      * @throws Exception
@@ -105,6 +105,8 @@ abstract class abstract_processor extends process_base {
     abstract protected function handle_api_success(ResponseInterface $response): array;
 
     /**
+     * Query the AI service.
+     *
      * @return array
      * @throws GuzzleException
      */
@@ -166,14 +168,15 @@ abstract class abstract_processor extends process_base {
     }
 
     /**
-     * Метод для получения значения настройки действия
+     * Method for retrieving the action setting value.
      *
-     * @param $settingname
+     * @param string $settingname
      * @return mixed
      * @throws Exception
      */
     protected function get_setting($settingname) {
-        if (!empty($settingname)
+        if (
+            !empty($settingname)
             && array_key_exists($settingname, $this->provider->actionconfig[$this->action::class]['settings'])
         ) {
             return $this->provider->actionconfig[$this->action::class]['settings'][$settingname];

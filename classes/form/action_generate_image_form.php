@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Generate image action provider settings form.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -23,20 +25,20 @@
 
 namespace aiprovider_yandexai\form;
 
-defined('MOODLE_INTERNAL') || die();
-
 use core_ai\form\action_settings_form;
 
 /**
- * Класс формы настройки для генерации изображения.
+ * Generate image action provider settings form.
  */
 class action_generate_image_form extends action_settings_form {
     /**
-     * @var string Название плагина.
+     * @var string Plugin name.
      */
     protected const PLUGINNAME = 'aiprovider_yandexai';
 
     /**
+     * Form definition.
+     *
      * @return void
      * @throws \coding_exception
      */
@@ -49,15 +51,15 @@ class action_generate_image_form extends action_settings_form {
         $action = $this->_customdata['action'];
         $providerid = $this->_customdata['providerid'] ?? 0;
 
-        // Тип действия
+        // Action type.
         $mform->addElement('hidden', 'action', $action);
         $mform->setType('action', PARAM_TEXT);
 
-        // Название провайдера
+        // Provider name.
         $mform->addElement('hidden', 'provider', self::PLUGINNAME);
         $mform->setType('provider', PARAM_TEXT);
 
-        // ID провайдера
+        // Provider ID.
         $mform->addElement('hidden', 'providerid', $providerid);
         $mform->setType('providerid', PARAM_INT);
 
@@ -66,7 +68,7 @@ class action_generate_image_form extends action_settings_form {
             $mform->setType('returnurl', PARAM_LOCALURL);
         }
 
-        // Адрес модели ИИ
+        // AI model endpoint.
         $mform->addElement(
             'text',
             'model',
@@ -79,7 +81,7 @@ class action_generate_image_form extends action_settings_form {
         $mform->addHelpButton('model', "action:{$actionname}:model", self::PLUGINNAME);
         $mform->addRule('model', null, 'required', null, 'client');
 
-        // Ссылка на API
+        // API URL.
         $mform->addElement(
             'text',
             'endpoint',
@@ -91,7 +93,7 @@ class action_generate_image_form extends action_settings_form {
             ?? 'https://llm.api.cloud.yandex.net/foundationModels/v1/imageGenerationAsync');
         $mform->addRule('endpoint', null, 'required', null, 'client');
 
-        // Ссылка на получение результата генерации
+        // Generation result endpoint.
         $mform->addElement(
             'text',
             'getimageurl',

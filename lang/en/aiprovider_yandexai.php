@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Strings for component aiprovider_yandexai, language 'en'.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -23,42 +25,33 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Общие строки плагина.
-$string['pluginname'] = 'Yandex AI API Provider';
-$string['privacy:metadata:aiprovider_yandexai:prompttext'] = 'The user entered text prompt used to generate the response.';
-$string['privacy:metadata:aiprovider_yandexai:model'] = 'The model used to generate the response.';
-$string['privacy:metadata:aiprovider_yandexai:numberimages'] = 'The number of images used in the response. When generating images.';
-$string['privacy:metadata:aiprovider_yandexai:responseformat'] = 'The format of the response. When generating images.';
-$string['privacy:metadata:aiprovider_yandexai:externalpurpose'] = 'This information is sent to the YandexGPT API to create a response. 
-To improve the quality of the responses generated, the Foundation Models API logs user accounts. 
-Do not transmit sensitive information and personal data in requests. 
-Your YandexGPT account settings may change the way YandexGPT stores and remembers this data. 
-With this plugin, no user data is explicitly sent to YandexGPT and is not saved in LMS Moodle.';
-$string['success'] = 'Success';
+$string['action:explain_text:model'] = 'AI model';
+$string['action:explain_text:model_help'] = 'The model used to explain the text. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
+$string['action:generate_image:getimageurl'] = 'Link to get the result of the generation';
+$string['action:generate_image:height'] = 'Aspect ratio of the generated image: height';
+$string['action:generate_image:model'] = 'AI model address';
+$string['action:generate_image:model_help'] = 'The model used to generate the image. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
+$string['action:generate_image:width'] = 'Aspect ratio of the generated image: width';
+$string['action:generate_text:allowhtml'] = 'Use html responses';
+$string['action:generate_text:model'] = 'AI model address';
+$string['action:generate_text:model_help'] = 'The model used to create a text response. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
+$string['action:summarise_text:model'] = 'AI model';
+$string['action:summarise_text:model_help'] = 'The model used to summarize the text. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
 $string['action:systeminstruction'] = 'System instruction';
 $string['action:systeminstruction_help'] = 'This instruction is sent to the AI model along with the user\'s prompt. Editing this instruction is not recommended unless absolutely required.';
 $string['apikey'] = 'YandexAI API Key';
 $string['apikey_help'] = 'You can find out how to get the key <a href="https://yandex.cloud/ru/docs/foundation-models/api-ref/authentication" target="_blank">here</a>.';
 $string['endpoint'] = 'API endpoint URL';
+$string['pluginname'] = 'Yandex AI API Provider';
+$string['privacy:metadata:aiprovider_yandexai:externalpurpose'] = 'This information is sent to the YandexGPT API to create a response.
+To improve the quality of the responses generated, the Foundation Models API logs user accounts.
+Do not transmit sensitive information and personal data in requests.
+Your YandexGPT account settings may change the way YandexGPT stores and remembers this data.
+With this plugin, no user data is explicitly sent to YandexGPT and is not saved in LMS Moodle.';
+$string['privacy:metadata:aiprovider_yandexai:model'] = 'The model used to generate the response.';
+$string['privacy:metadata:aiprovider_yandexai:numberimages'] = 'The number of images used in the response. When generating images.';
+$string['privacy:metadata:aiprovider_yandexai:prompttext'] = 'The user entered text prompt used to generate the response.';
+$string['privacy:metadata:aiprovider_yandexai:responseformat'] = 'The format of the response. When generating images.';
+$string['success'] = 'Success';
 $string['temperature'] = 'Generation temperature';
 $string['temperature_help'] = 'Enter a value from 0 to 1 with an accuracy of 2 characters';
-
-// Строки для действия генерации текста.
-$string['action:generate_text:model'] = 'AI model address';
-$string['action:generate_text:model_help'] = 'The model used to create a text response. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
-$string['action:generate_text:allowhtml'] = 'Use html responses';
-
-// Строки для действия генерации изображения.
-$string['action:generate_image:model'] = 'AI model address';
-$string['action:generate_image:model_help'] = 'The model used to generate the image. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
-$string['action:generate_image:getimageurl'] = 'Link to get the result of the generation';
-$string['action:generate_image:width'] = 'Aspect ratio of the generated image: width';
-$string['action:generate_image:height'] = 'Aspect ratio of the generated image: height';
-
-// Строки для действия "Краткое изложение текста".
-$string['action:summarise_text:model'] = 'AI model';
-$string['action:summarise_text:model_help'] = 'The model used to summarize the text. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';
-
-// Строки для действия "Пояснительный текст".
-$string['action:explain_text:model'] = 'AI model';
-$string['action:explain_text:model_help'] = 'The model used to explain the text. Replace the catalogue_id with the ID of the folder you want to use. <a href="https://yandex.cloud/ru/docs/resource-manager/operations/folder/get-id" target="_blank">Help</a> for getting the folder ID';

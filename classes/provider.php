@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Class provider.
+ *
  * @package   aiprovider_yandexai
  * @copyright 2024 LMS-Service {@link https://lms-service.ru/}
  * @author    Ibragim Abdul-Medzhidov
@@ -22,8 +24,6 @@
  */
 
 namespace aiprovider_yandexai;
-
-defined('MOODLE_INTERNAL') || die();
 
 use core_ai\form\action_settings_form;
 use Psr\Http\Message\RequestInterface;
@@ -37,14 +37,14 @@ use Psr\Http\Message\RequestInterface;
  */
 class provider extends \core_ai\provider {
     /**
-     * Список доступных действий для данного провайдера.
+     * List of available actions for this provider.
      *
-     * @return array массив названий классов.
+     * @return array array of class names.
      */
     public static function get_action_list(): array {
         $classes = [];
-        // Список действий, которые поддерживает провайдер.
-        // Содержит данные в виде массива, где ключ - название действия, а значение - класс действия.
+        // List of actions supported by the provider.
+        // Contains data as an array where the key is the action name and the value is the action class.
         $actions = [
             'generate_text' => \core_ai\aiactions\generate_text::class,
             'generate_image' => \core_ai\aiactions\generate_image::class,
@@ -53,7 +53,7 @@ class provider extends \core_ai\provider {
         ];
 
         foreach ($actions as $componentname => $class) {
-            // Если действие активно, добавляем его в список действий в инстансе провайдера.
+            // If the action is active, add it to the action list in the provider instance.
             if (self::plugin_enabled($componentname)) {
                 $classes[] = $class;
             }
@@ -63,7 +63,7 @@ class provider extends \core_ai\provider {
     }
 
     /**
-     * Данные для аутентификации
+     * Authentication data
      *
      * @param RequestInterface $request
      * @return RequestInterface
@@ -74,7 +74,7 @@ class provider extends \core_ai\provider {
     }
 
     /**
-     * Выводим ссылку на форму настройки действия в инстансе провайдера
+     * Outputting the link to the action configuration form in the provider instance.
      *
      * @param string $action
      * @param array $customdata
@@ -98,6 +98,8 @@ class provider extends \core_ai\provider {
     }
 
     /**
+     * Get the default settings for the action.
+     *
      * @param string $action
      * @return array
      */
@@ -120,7 +122,7 @@ class provider extends \core_ai\provider {
     }
 
     /**
-     * Проверяем, что провайдер имеет минимальную конфигурацию для работы.
+     * Checking that the provider has the minimum configuration required to work.
      *
      * @return bool Return true if configured.
      */
@@ -129,26 +131,26 @@ class provider extends \core_ai\provider {
     }
 
     /**
-     * Проверяем, включено ли действие
+     * Checking if the action is enabled.
      *
-     * @param $action
+     * @param string $componentname
      * @return bool
      * @throws \coding_exception
      */
     private static function plugin_enabled($componentname): bool {
-        // ИИ плагины эдитора
+        // Editor AI plugins.
         $editorplugins = ['generate_image', 'generate_text'];
 
         if (in_array($componentname, $editorplugins)) {
-            // Для плагинов эдитора проверяем включено ли размещение "текстовый редактор"
+            // For editor plugins, checking if the text editor placement is enabled.
             $componentname = 'aiplacement_editor';
         }
 
-        // ИИ плагины курса
+        // Course AI plugins.
         $courseplugins = ['explain_text', 'summarise_text'];
 
         if (in_array($componentname, $courseplugins)) {
-            // Для плагинов курса проверяем включено ли размещение "Course Assistance"
+            // For course plugins, checking if the "Course Assistance" placement is enabled.
             $componentname = 'aiplacement_courseassist';
         }
 
